@@ -1,61 +1,75 @@
-// Every tuning number and colour in one place. The playfield is a fixed 1280x720 logical area;
-// the renderer scales it to the window, so no rule below depends on the screen size.
-
-export const FIELD = { width: 1280, height: 720, groundY: 664 };
+// Moonrise City — every shared tuning number and colour in one place. The world is a fixed
+// 3600x2600 waterfront city; the camera shows a window of it at 1:1 scale, so nothing below
+// depends on the screen size.
 
 /** The simulation's fixed step, in seconds: 60 updates a second whatever the display's rate. */
 export const STEP = 1 / 60;
 
+export const WORLD = {
+  width: 3600,
+  height: 2600,
+  /** East of this line is the bay; west of it, city. */
+  shoreX: 3000,
+  /** The promenade runs along the shore from this line to the water. */
+  promenadeX: 2820,
+  roadWidth: 120,
+};
+
+export const TIME = {
+  /** The career opens at 09:00 on day one. */
+  startMinutes: 9 * 60,
+  /** Game minutes per real second while playing: a full day lasts twelve real minutes. */
+  minutesPerSecond: 2,
+};
+
 export const PLAYER = {
-  width: 72,
-  height: 24,
-  speed: 560,
-  invulnerable: 1.5,
+  radius: 13,
+  walkSpeed: 178,
+  sprintSpeed: 268,
+  maxHealth: 100,
+  /** Health regained per second while out of trouble. */
+  regenPerSecond: 2.2,
+  punchRange: 46,
+  punchCooldown: 0.34,
+  gunCooldown: 0.17,
+  gunRange: 560,
 };
 
-export const LIVES = 3;
-
-export const BLOCK = {
-  minWidth: 40,
-  maxWidth: 110,
-  height: 36,
-  speed: 240,
-  speedPerLevel: 30,
-  speedJitter: 90,
-  interval: 0.55,
-  intervalScale: 0.88,
-  minInterval: 0.14,
-  dodgePoints: 1,
-};
-
-export const COIN = {
-  size: 24,
-  speed: 190,
-  speedPerLevel: 14,
-  interval: 1.4,
-  intervalJitter: 0.8,
-  points: 10,
-};
-
-/** Seconds of play per level, and the last level: speeds and spawn rates stop growing there. */
-export const LEVEL = { seconds: 12, max: 12 };
-
-/** How many falling things can exist at once; the pool is allocated once, at boot. */
-export const POOL_SIZE = 64;
-
-export const PALETTE = {
-  backdrop: '#11141b',
-  sky: '#1b1f2a',
-  ground: '#2a3040',
-  player: '#4fc3f7',
-  block: '#e5534b',
-  coin: '#f2c94c',
-  panel: '#252b38',
-  text: '#eef1f5',
-  muted: '#8b93a3',
-};
+export const SAVE_KEY = 'moonrise-city.career.v1';
 
 export const FONT = 'system-ui, -apple-system, "Segoe UI", sans-serif';
 
-/** Where the best score is kept between visits (this browser only). */
-export const BEST_KEY = 'block-dodger.best';
+export const PALETTE = {
+  backdrop: '#0b0e1a',
+  waterDay: '#1d5069',
+  waterNight: '#0c2237',
+  land: '#222635',
+  park: '#1d3d2f',
+  parkPath: '#3a415a',
+  promenade: '#5c564a',
+  sidewalk: '#484d63',
+  asphalt: '#2d3143',
+  lotAsphalt: '#272b3a',
+  roadLine: '#cfd4e2',
+  crosswalk: '#aab0c2',
+  gold: '#f2c14e',
+  warmLight: '#ffd9a0',
+  text: '#eef1f8',
+  muted: '#9aa3ba',
+  danger: '#e5534b',
+  policeBlue: '#3f7de0',
+  policeRed: '#e5534b',
+  health: '#57c46a',
+  panel: 'rgba(13, 16, 30, 0.88)',
+  panelEdge: '#3d4a6b',
+};
+
+/** Building top colours: silvers and indigos, the Moonrise look. Roofs are drawn darker. */
+export const BUILDING_SKINS = [
+  { top: '#8d99ae', side: '#5d6880' },
+  { top: '#a7b0c2', side: '#707c96' },
+  { top: '#6c7a94', side: '#49536b' },
+  { top: '#98a2b8', side: '#66718c' },
+  { top: '#7f8ca3', side: '#55617a' },
+  { top: '#b0a58e', side: '#7d7460' },
+];

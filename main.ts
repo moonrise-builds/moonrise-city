@@ -1,3 +1,7 @@
+// Moonrise City — an original open-world courier crime game built for the gta6-01 bounty
+// with the make.fun kit. The plumbing below is the kit's hand-in program; every line of the
+// game it carries (game/) was written for this entry.
+//
 // A working gta6-01 entry (Node 22, standard library only): the game is this directory's
 // game/ folder, plain static files a desktop browser loads offline (game/index.html and its ES
 // modules, no library and no network request), and the program hands it in. It copies game/ and
